@@ -1,0 +1,22 @@
+{
+  "name": "mars-rover-kata",
+  "version": "1.0.0",
+  "description": "A TDD solution for the Mars Rover Kata",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ian-denev/mars-rover-kata.git"
+  },
+  "author": "Ian Denev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ian-denev/mars-rover-kata/issues"
+  },
+  "homepage": "https://github.com/ian-denev/mars-rover-kata#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
