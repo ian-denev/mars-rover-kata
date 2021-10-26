@@ -1,7 +1,10 @@
-const createPlateau = ([platX, platY]) => [...Array(platY)].map(e => Array(platX));
+const createPlateau = ([platX, platY]) => {
+    if (!platX) throw new Error("x cannot be 0");
+    else if (!platY) throw new Error("y cannot be 0");
+    return [...Array(platY)].map(e => Array(platX));
+}
 
-const calculateRoverPosition = ([platX, platY], ...roverData) => {
-
+const calculateRoverPosition = (upperRightCoordinates, ...roverData) => {
 }
 
 module.exports = { calculateRoverPosition, createPlateau }
