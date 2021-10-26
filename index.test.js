@@ -1,6 +1,10 @@
-const { calculateRoverPosition, createPlateau } = require("./index");
+const { 
+    calculateRoverPosition, 
+    createPlateau, 
+    placeRover 
+} = require("./index");
 
-describe("createPlateau testing suite", () => {
+xdescribe("createPlateau testing suite", () => {
     test("createPlateau 6x5 Test", () => {
         const plateauUpperRightCoordinates = [6, 5];
         const plateau = [
@@ -39,5 +43,15 @@ describe("createPlateau testing suite", () => {
     test("createPlateau 1x0 Test", () => {
         const plateauUpperRightCoordinates = [1, 0];
         expect(() => createPlateau(plateauUpperRightCoordinates)).toThrow("y cannot be 0");
+    })
+})
+
+describe("placeRover testing suite", () => { 
+    test("placeRover Initial Placement", () => {
+        const plateau = createPlateau([6, 5]);
+        const roverCoordinates = [5, 1];
+        const roverOrientation = "N";
+        const act = placeRover(plateau, roverCoordinates, roverOrientation);
+        expect(act[3][5]).toEqual("N");
     })
 })
