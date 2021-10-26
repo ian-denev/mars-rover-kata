@@ -4,7 +4,17 @@ const createPlateau = ([platX, platY]) => {
     return [...Array(platY)].map(e => Array(platX));
 }
 
+const placeRover = (plateau, roverCoordinates, roverOrientation) => {
+    const roverX = roverCoordinates[0];
+    const roverY = roverCoordinates[1];
+    const platY = plateau.length;
+
+    plateau[platY - 1 - roverY][roverX] = roverOrientation;
+
+    return plateau;
+}
+
 const calculateRoverPosition = (upperRightCoordinates, ...roverData) => {
 }
 
-module.exports = { calculateRoverPosition, createPlateau }
+module.exports = { calculateRoverPosition, createPlateau, placeRover }
