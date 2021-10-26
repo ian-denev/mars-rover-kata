@@ -52,6 +52,13 @@ describe("placeRover testing suite", () => {
         const roverCoordinates = [5, 1];
         const roverOrientation = "N";
         const act = placeRover(plateau, roverCoordinates, roverOrientation);
-        expect(act[3][5]).toEqual("N");
+        expect(act[3][5]).toEqual(roverOrientation);
+    })
+    test("placeRover Initial Placement", () => {
+        const plateau = createPlateau([8, 8]);
+        const roverCoordinates = [4, 4];
+        const roverOrientation = "E";
+        const act = placeRover(plateau, roverCoordinates, roverOrientation);
+        expect(act[3][4]).toEqual(roverOrientation);
     })
 })
