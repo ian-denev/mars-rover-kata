@@ -2,7 +2,7 @@ const { calculateRoverPosition, createPlateau } = require("./index");
 
 describe("Combined testing suite", () => {
     test("createPlateau Test", () => {
-        const plateauSize = [6, 5];
+        const plateauUpperRightCoordinates = [6, 5];
         const plateau = [
             [undefined, undefined, undefined, undefined, undefined, undefined],
             [undefined, undefined, undefined, undefined, undefined, undefined],
@@ -10,6 +10,6 @@ describe("Combined testing suite", () => {
             [undefined, undefined, undefined, undefined, undefined, undefined],
             [undefined, undefined, undefined, undefined, undefined, undefined],
         ]
-        expect(createPlateau(plateauSize)).toEqual(plateau);
+        expect(createPlateau(plateauUpperRightCoordinates)).toEqual(plateau);
     })
 })
