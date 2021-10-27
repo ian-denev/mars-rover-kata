@@ -16,9 +16,12 @@ See PDF
   * https://www.conventionalcommits.org/
   * https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines
 ## Personal goals
-* Practice test doubles in Jest
+* Must: Correct output for the provided input
+* Must: Apply TDD approach
+* Should: Practice test doubles in Jest
   * Use dummies - DRY principle
   * Use describe.each for test parameterisation wherever possible - Open-Closed principle
   * Use stubs / mocks wherever possible
-* Apply separation of concerns
+* Should: Apply separation of concerns
   * Use index.js only as an entry point to the program
+* Could: Visualise plateau in console - use 2D array
