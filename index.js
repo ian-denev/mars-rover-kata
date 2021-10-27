@@ -1,4 +1,6 @@
 const calculateRoverPosition = (platCoord, [roverX, roverY], roverOri, roverMovement) => {
+    if (roverX < 0 || roverX > platCoord[0]) throw new Error("Initial placement on X axis not allowed");
+    else if (roverY < 0 || roverY > platCoord[1]) throw new Error("Initial placement on Y axis not allowed");
     [...roverMovement].forEach((letter, index) => {
         switch (letter) {
             case "L": roverOri == "N" ? roverOri = "W" : roverOri == "W" ? roverOri = "S" :

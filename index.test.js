@@ -33,17 +33,21 @@ describe("calculateRoverPosition testing suite", () => {
             .toStrictEqual([roverCoordinatesEnd,
                 roverOrientationEnd]);
     })
-    test("calculateRoverPosition - out of bounds on X", () => {
-        const plateauUpperRightCoordinates = [1, 1];
-        const roverCoordinatesStart = [0, 0];
-        const roverOrientationStart = "E";
-        const roverMovement = "MMMMMMM";
+    test("calculateRoverPosition - initial placement out of bounds on X", () => {
+        const plateauUpperRightCoordinates = [5, 5];
+        const roverCoordinatesStart = [6, 3];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
-            roverCoordinatesStart,
-            roverOrientationStart,
-            roverMovement))
-            .toThrow("Movement on X axis at index 1 not allowed");
+            roverCoordinatesStart))
+            .toThrow("Initial placement on X axis not allowed");
+    })
+    test("calculateRoverPosition - initial placement out of bounds on Y", () => {
+        const plateauUpperRightCoordinates = [5, 5];
+        const roverCoordinatesStart = [3, -1];
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart))
+            .toThrow("Initial placement on Y axis not allowed");
     })
     test("calculateRoverPosition - out of bounds (negative) on X", () => {
         const plateauUpperRightCoordinates = [1, 1];
