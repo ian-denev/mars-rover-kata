@@ -1,7 +1,7 @@
 # mars-rover-kata
 This repository contains a solution for the Mars Rover Kata
 ## Problem Description
-See PDF
+* See [problem-description.md](./problem-description.md)
 ## How to run
 * node index.js - use to run task sheet example
 * different inputs are available - comment/uncomment to use them
