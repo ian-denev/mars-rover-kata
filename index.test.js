@@ -50,6 +50,45 @@ describe("calculateRoverPosition testing suite", () => {
             previousRoverPositions)).toStrictEqual([roverCoordinatesEnd,
                 roverOrientationEnd]);
     })
+    test("collision when placing rover 2", () => {
+        const plateauUpperRightCoordinates = [5, 5];
+        const roverCoordinatesStart = [3, 3];
+        const roverOrientationStart = "E";
+        const roverMovement = "MMRMMRMRRM";
+        const roverCoordinatesEnd = [5, 1];
+        const roverOrientationEnd = "E";
+        const previousRoverPositions = [
+            [[3, 3], "N"]
+        ];
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement,
+            previousRoverPositions))
+            .toThrow("Another rover is already at this position");
+    })
+    test("collision when placing rover 5", () => {
+        const plateauUpperRightCoordinates = [5, 5];
+        const roverCoordinatesStart = [2, 2];
+        const roverOrientationStart = "E";
+        const roverMovement = "MMRMMRMRRM";
+        const roverCoordinatesEnd = [5, 1];
+        const roverOrientationEnd = "E";
+        const previousRoverPositions = [
+            [[1, 1], "N"],
+            [[0, 0], "W"],
+            [[2, 2], "N"],
+            [[3, 3], "N"],
+        ];
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement,
+            previousRoverPositions))
+            .toThrow("Another rover is already at this position");
+    })
     test("initial placement out of bounds on X", () => {
         const plateauUpperRightCoordinates = [5, 5];
         const roverCoordinatesStart = [6, 3];
