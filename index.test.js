@@ -33,22 +33,15 @@ describe("calculateRoverPosition testing suite", () => {
         });
 
     test("task sheet rover 1 and 2 - no collision", () => {
-        const plateauUpperRightCoordinates = [5, 5];
-        const roverCoordinatesStart = [3, 3];
-        const roverOrientationStart = "E";
-        const roverMovement = "MMRMMRMRRM";
-        const roverCoordinatesEnd = [5, 1];
-        const roverOrientationEnd = "E";
         // assume that rover 1 finishes before rover 2 starts
-        const previousRoverPositions = [[[1, 3], "N"]]
-        //calculateRoverPosition(...).fn mock
+        const previousRoverPositions = [roverOneTaskSheet.coordinatesEnd];
         expect(calculateRoverPosition(
-            plateauUpperRightCoordinates,
-            roverCoordinatesStart,
-            roverOrientationStart,
-            roverMovement,
-            previousRoverPositions)).toStrictEqual([roverCoordinatesEnd,
-                roverOrientationEnd]);
+            plateauTaskSheet.upperRightCoordinates,
+            roverTwoTaskSheet.coordinatesStart,
+            roverTwoTaskSheet.orientationStart,
+            roverTwoTaskSheet.movement,
+            previousRoverPositions)).toStrictEqual([roverTwoTaskSheet.coordinatesEnd,
+            roverTwoTaskSheet.orientationEnd]);
     })
     test("collision when placing rover 2", () => {
         const plateauUpperRightCoordinates = [5, 5];
