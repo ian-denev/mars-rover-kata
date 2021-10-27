@@ -3,46 +3,35 @@ const {
 } = require("./index");
 
 describe("calculateRoverPosition testing suite", () => {
-    beforeEach(() => {
-        plateauTaskSheet = {
-            upperRightCoordinates: [5, 5]
-        }
-        roverOneTaskSheet = {
-            coordinatesStart: [1, 2],
-            orientationStart: "N",
-            movement: "LMLMLMLMM"
-        };
-        roverTwoTaskSheet = {
-            coordinatesStart: [3, 3],
-            orientationStart: "E",
-            movement: "MMRMMRMRRM"
-        };
-    });
+    // Dummy Objects
+    plateauTaskSheet = {
+        upperRightCoordinates: [5, 5]
+    }
+    roverOneTaskSheet = {
+        coordinatesStart: [1, 2],
+        orientationStart: "N",
+        movement: "LMLMLMLMM",
+        coordinatesEnd: [1, 3],
+        orientationEnd: "N"
+    };
+    roverTwoTaskSheet = {
+        coordinatesStart: [3, 3],
+        orientationStart: "E",
+        movement: "MMRMMRMRRM",
+        coordinatesEnd: [5, 1],
+        orientationEnd: "E"
+    };
 
-    afterEach(() => {
-        jest.clearAllMocks();
-    });
+    test.each([roverOneTaskSheet, roverTwoTaskSheet])
+        ("task sheet rover test #$#", ({ coordinatesStart, orientationStart, movement, coordinatesEnd, orientationEnd }) => {
+            expect(calculateRoverPosition(
+                plateauTaskSheet.upperRightCoordinates,
+                coordinatesStart,
+                orientationStart,
+                movement))
+                .toStrictEqual([coordinatesEnd, orientationEnd]);
+        });
 
-    test("task sheet rover 1", () => {
-        const [roverCoordinatesEnd, roverOrientationEnd] = [[1, 3], "N"];
-        expect(calculateRoverPosition(
-            plateauTaskSheet.upperRightCoordinates,
-            roverOneTaskSheet.coordinatesStart,
-            roverOneTaskSheet.orientationStart,
-            roverOneTaskSheet.movement))
-            .toStrictEqual([roverCoordinatesEnd,
-                roverOrientationEnd]);
-    })
-    test("task sheet rover 2", () => {
-        const [roverCoordinatesEnd, roverOrientationEnd] = [[5, 1], "E"];
-        expect(calculateRoverPosition(
-            plateauTaskSheet.upperRightCoordinates,
-            roverTwoTaskSheet.coordinatesStart,
-            roverTwoTaskSheet.orientationStart,
-            roverTwoTaskSheet.movement))
-            .toStrictEqual([roverCoordinatesEnd,
-                roverOrientationEnd]);
-    })
     test("task sheet rover 1 and 2 - no collision", () => {
         const plateauUpperRightCoordinates = [5, 5];
         const roverCoordinatesStart = [3, 3];
