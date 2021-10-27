@@ -14,8 +14,8 @@ const placeRover = (plateau, roverCoordinates, roverOrientation) => {
     return plateau;
 }
 
-const calculateRoverPosition = (plateauUpperRightCoordinates, [roverX, roverY], roverOri, roverMovement) => {
-    [...roverMovement].forEach(letter => {
+const calculateRoverPosition = (platCoord, [roverX, roverY], roverOri, roverMovement) => {
+    [...roverMovement].forEach((letter, index) => {
         switch (letter) {
             case "L": roverOri == "N" ? roverOri = "W" : roverOri == "W" ? roverOri = "S" :
                 roverOri == "S" ? roverOri = "E" : roverOri == "E" ? roverOri = "N" : ""; break;
@@ -28,6 +28,8 @@ const calculateRoverPosition = (plateauUpperRightCoordinates, [roverX, roverY], 
                     case "S": roverY--; break;
                     case "W": roverX--; break;
                 }
+                if (roverX < 0 || roverX > platCoord[0]) throw new Error(`Movement on X axis at index ${index} not allowed`);
+                else if (roverY < 0 || roverY > platCoord[1]) throw new Error(`Movement on Y axis at index ${index} not allowed`);
                 break;
         }
     })

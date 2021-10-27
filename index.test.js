@@ -94,4 +94,28 @@ describe("calculateRoverPosition testing suite", () => {
             .toStrictEqual([roverCoordinatesEnd,
                 roverOrientationEnd]);
     })
+    test("calculateRoverPosition - out of bounds on X", () => {
+        const plateauUpperRightCoordinates = [1, 1];
+        const roverCoordinatesStart = [0, 0];
+        const roverOrientationStart = "E";
+        const roverMovement = "MMMMMMM";
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement))
+            .toThrow("Movement on X axis at index 1 not allowed");
+    })
+    test("calculateRoverPosition - out of bounds on Y", () => {
+        const plateauUpperRightCoordinates = [1, 1];
+        const roverCoordinatesStart = [0, 0];
+        const roverOrientationStart = "N";
+        const roverMovement = "LLLLMMMMMMM";
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement))
+            .toThrow("Movement on Y axis at index 5 not allowed");
+    })
 })
