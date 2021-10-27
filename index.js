@@ -3,7 +3,21 @@ const { createPlateau, placeRover } = require("./visualise");
 
 let input = [plateau, ...roverData] = [
     // Comment / uncomment below to try different inputs
+
+    // (1) Task sheet example:
     "5 5", "1 2 N", "LMLMLMLMM", "3 3 E", "MMRMMRMRRM"
+
+    // (2a) Single rover example:
+    // "5 3", "0 0 N", "MMMRRMMMLMMMMLRLLMM"
+
+    // (2b) Single rover example - bump into edge:
+    // "5 3", "0 0 N", "MMMRRMMMLMMMMLRLLMMMMMMMMMM"
+
+    // (3a) Five rovers example:
+    // "4 4", "0 0 N", "MMMRRMMMLMMMMLRLLMM", "1 0 N", "MMRMMRM", "3 0 E", "MLM", "0 4 W", "RRRMMLMLM", "4 4 S", "MRMLMRMLMRMLMRM"
+
+    // (3b) Five rovers example - bump into another rover:
+    // "4 4", "0 0 N", "MMMRRMMMLMMMMLRLLMM", "1 0 N", "MMRMMRM", "3 0 E", "MLM", "0 4 W", "RRRMMLMLM", "4 4 S", "MRMLMRMLMM"
 ];
 
 const plateauUpperRightCoordinates = plateau.split(" ").map(e => parseInt(e));
