@@ -14,7 +14,24 @@ const placeRover = (plateau, roverCoordinates, roverOrientation) => {
     return plateau;
 }
 
-const calculateRoverPosition = (upperRightCoordinates, ...roverData) => {
+const calculateRoverPosition = (plateauUpperRightCoordinates, [roverX, roverY], roverOri, roverMovement) => {
+    [...roverMovement].forEach(letter => {
+        switch (letter) {
+            case "L": roverOri == "N" ? roverOri = "W" : roverOri == "W" ? roverOri = "S" :
+                roverOri == "S" ? roverOri = "E" : roverOri == "E" ? roverOri = "N" : ""; break;
+            case "R": roverOri == "N" ? roverOri = "E" : roverOri == "E" ? roverOri = "S" :
+                roverOri == "S" ? roverOri = "W" : roverOri == "W" ? roverOri = "N" : ""; break;
+            case "M":
+                switch (roverOri) {
+                    case "N": roverY++; break;
+                    case "E": roverX++; break;
+                    case "S": roverY--; break;
+                    case "W": roverX--; break;
+                }
+                break;
+        }
+    })
+    return [[roverX, roverY], roverOri];
 }
 
 module.exports = { calculateRoverPosition, createPlateau, placeRover }
