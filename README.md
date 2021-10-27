@@ -26,3 +26,8 @@ This repository contains a solution for the Mars Rover Kata
 * Should: Apply separation of concerns
   * ✔️ Use index.js only as an entry point to the program
 * ✔️ Could: Visualise plateau in console - use 2D array
+## Future Considerations
+  * A differently-shaped plateau can be supported by making some spaces on the plateau unavailable to traverse.
+    * E.g. a 3x3-sized plateau can become plus-shaped if a space on each corner is blocked off
+  * Different types of vehicles can be supported easily if they are NxN-sized
+    * Vehicles with unconvential sizes e.g. taking up 3 spaces will possibly need individual rotation strategies
