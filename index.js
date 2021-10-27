@@ -25,11 +25,11 @@ for (let i = 0; i < input.length; i += 2) {
     previousPositions.push(calculatedPosition);
 }
 
+// Final output + visualisation
 let visualisedPlateau = createPlateau(plateauUpperRightCoordinates);
 previousPositions.forEach(pos => {
-    visualisedPlateau = placeRover(visualisedPlateau, pos[0], pos[1])
+    visualisedPlateau = placeRover(visualisedPlateau, pos[0], pos[1]);
+    console.log(pos[0][0], pos[0][1], pos[1])
 })
 
-// Output
-console.log(previousPositions);
 console.log(visualisedPlateau);
