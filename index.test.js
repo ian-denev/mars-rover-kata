@@ -142,4 +142,16 @@ describe("calculateRoverPosition testing suite", () => {
             roverMovement))
             .toThrow("Movement on Y axis at index 0 not allowed");
     })
+    test("calculateRoverPosition - unrecognised movement command", () => {
+        const plateauUpperRightCoordinates = [1, 1];
+        const roverCoordinatesStart = [0, 0];
+        const roverOrientationStart = "S";
+        const roverMovement = "RLRLRLP";
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement))
+            .toThrow("Unrecognised movement command at index 6");
+    })
 })
