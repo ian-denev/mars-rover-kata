@@ -33,7 +33,6 @@ describe("calculateRoverPosition testing suite", () => {
         });
 
     test("task sheet rover 1 and 2 - no collision", () => {
-        // assume that rover 1 finishes before rover 2 starts
         const previousRoverPositions = [roverOneTaskSheet.coordinatesEnd];
         expect(calculateRoverPosition(
             plateauTaskSheet.upperRightCoordinates,
