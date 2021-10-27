@@ -37,4 +37,4 @@ const calculateRoverPosition = (platCoord, [roverX, roverY], roverOri, roverMove
     return [[roverX, roverY], roverOri];
 }
 
-module.exports = { calculateRoverPosition }
+module.exports = calculateRoverPosition;
