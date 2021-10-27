@@ -1,6 +1,4 @@
-const {
-    calculateRoverPosition
-} = require("./roverOperations");
+const calculateRoverPosition = require("./roverOperations");
 
 describe("calculateRoverPosition testing suite", () => {
     // Dummy Objects
