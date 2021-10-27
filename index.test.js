@@ -44,12 +44,8 @@ describe("calculateRoverPosition testing suite", () => {
             roverTwoTaskSheet.orientationEnd]);
     })
     test("collision when placing rover 2", () => {
-        const plateauUpperRightCoordinates = [5, 5];
-        const roverCoordinatesStart = [3, 3];
-        const roverOrientationStart = "E";
-        const roverMovement = "MMRMMRMRRM";
-        const previousRoverPositions = [
-            [[3, 3], "N"]
+        const [plateauUpperRightCoordinates, roverCoordinatesStart, roverOrientationStart, roverMovement, previousRoverPositions] = [
+            [5, 5], [3, 3], "E", "MMRMMRMRRM", [[[3, 3], "N"]]
         ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
@@ -60,15 +56,8 @@ describe("calculateRoverPosition testing suite", () => {
             .toThrow("Another rover is already at this position");
     })
     test("collision when placing rover 5", () => {
-        const plateauUpperRightCoordinates = [5, 5];
-        const roverCoordinatesStart = [2, 2];
-        const roverOrientationStart = "E";
-        const roverMovement = "MMRMMRMRRM";
-        const previousRoverPositions = [
-            [[1, 1], "N"],
-            [[0, 0], "W"],
-            [[2, 2], "N"],
-            [[3, 3], "N"],
+        const [plateauUpperRightCoordinates, roverCoordinatesStart, roverOrientationStart, roverMovement, previousRoverPositions] = [
+            [5, 5], [2, 2], "E", "MMRMMRMRRM", [[[1, 1], "N"], [[0, 0], "W"], [[2, 2], "N"], [[3, 3], "N"]]
         ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
@@ -79,12 +68,8 @@ describe("calculateRoverPosition testing suite", () => {
             .toThrow("Another rover is already at this position");
     })
     test("collision into another rover when moving", () => {
-        const plateauUpperRightCoordinates = [5, 5];
-        const roverCoordinatesStart = [0, 3];
-        const roverOrientationStart = "E";
-        const roverMovement = "MMLRRLMMMMMMM";
-        const previousRoverPositions = [
-            [[3, 3], "N"]
+        const [plateauUpperRightCoordinates, roverCoordinatesStart, roverOrientationStart, roverMovement, previousRoverPositions] = [
+            [5, 5], [0, 3], "E", "MMLRRLMMMMMMM", [[[3, 3], "N"]]
         ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
@@ -95,26 +80,27 @@ describe("calculateRoverPosition testing suite", () => {
             .toThrow("Movement obstructed by another rover");
     })
     test("initial placement out of bounds on X", () => {
-        const plateauUpperRightCoordinates = [5, 5];
-        const roverCoordinatesStart = [6, 3];
+        const [plateauUpperRightCoordinates, roverCoordinatesStart] = [
+            [5, 5], [6, 3]
+        ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
             roverCoordinatesStart))
             .toThrow("Initial placement on X axis not allowed");
     })
     test("initial placement out of bounds on Y", () => {
-        const plateauUpperRightCoordinates = [5, 5];
-        const roverCoordinatesStart = [3, -1];
+        const [plateauUpperRightCoordinates, roverCoordinatesStart] = [
+            [5, 5], [3, -1]
+        ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
             roverCoordinatesStart))
             .toThrow("Initial placement on Y axis not allowed");
     })
     test("out of bounds (negative) on X", () => {
-        const plateauUpperRightCoordinates = [1, 1];
-        const roverCoordinatesStart = [0, 0];
-        const roverOrientationStart = "W";
-        const roverMovement = "MMMMMMM";
+        const [plateauUpperRightCoordinates, roverCoordinatesStart, roverOrientationStart, roverMovement] = [
+            [1, 1], [0, 0], "W", "MMMMMMM"
+        ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
             roverCoordinatesStart,
@@ -123,10 +109,9 @@ describe("calculateRoverPosition testing suite", () => {
             .toThrow("Movement on X axis at index 0 not allowed");
     })
     test("out of bounds on Y", () => {
-        const plateauUpperRightCoordinates = [1, 1];
-        const roverCoordinatesStart = [0, 0];
-        const roverOrientationStart = "N";
-        const roverMovement = "LLLLMMMMMMM";
+        const [plateauUpperRightCoordinates, roverCoordinatesStart, roverOrientationStart, roverMovement] = [
+            [1, 1], [0, 0], "N", "LLLLMMMMMMM"
+        ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
             roverCoordinatesStart,
@@ -135,10 +120,9 @@ describe("calculateRoverPosition testing suite", () => {
             .toThrow("Movement on Y axis at index 5 not allowed");
     })
     test("out of bounds (negative) on Y", () => {
-        const plateauUpperRightCoordinates = [1, 1];
-        const roverCoordinatesStart = [0, 0];
-        const roverOrientationStart = "S";
-        const roverMovement = "M";
+        const [plateauUpperRightCoordinates, roverCoordinatesStart, roverOrientationStart, roverMovement] = [
+            [1, 1], [0, 0], "S", "M"
+        ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
             roverCoordinatesStart,
@@ -147,10 +131,9 @@ describe("calculateRoverPosition testing suite", () => {
             .toThrow("Movement on Y axis at index 0 not allowed");
     })
     test("unrecognised movement command", () => {
-        const plateauUpperRightCoordinates = [1, 1];
-        const roverCoordinatesStart = [0, 0];
-        const roverOrientationStart = "S";
-        const roverMovement = "RLRLRLP";
+        const [plateauUpperRightCoordinates, roverCoordinatesStart, roverOrientationStart, roverMovement] = [
+            [1, 1], [0, 0], "S", "RLRLRLP"
+        ];
         expect(() => calculateRoverPosition(
             plateauUpperRightCoordinates,
             roverCoordinatesStart,
@@ -159,12 +142,9 @@ describe("calculateRoverPosition testing suite", () => {
             .toThrow("Unrecognised movement command at index 6");
     })
     test("no movement", () => {
-        const plateauUpperRightCoordinates = [1, 1];
-        const roverCoordinatesStart = [1, 0];
-        const roverOrientationStart = "S";
-        const roverMovement = "";
-        const roverCoordinatesEnd = [1, 0];
-        const roverOrientationEnd = "S";
+        const [plateauUpperRightCoordinates, roverCoordinatesStart, roverOrientationStart, roverMovement, roverCoordinatesEnd, roverOrientationEnd] = [
+            [1, 1], [1, 0], "S", "", [1, 0], "S"
+        ];
         expect(calculateRoverPosition(
             plateauUpperRightCoordinates,
             roverCoordinatesStart,
