@@ -5,7 +5,7 @@ const {
 describe("calculateRoverPosition testing suite", () => {
     beforeEach(() => {
         plateauTaskSheet = {
-            upperRightCoordinates : [5, 5]
+            upperRightCoordinates: [5, 5]
         }
         roverOneTaskSheet = {
             coordinatesStart: [1, 2],
@@ -24,8 +24,7 @@ describe("calculateRoverPosition testing suite", () => {
     });
 
     test("task sheet rover 1", () => {
-        const roverCoordinatesEnd = [1, 3];
-        const roverOrientationEnd = "N";
+        const [roverCoordinatesEnd, roverOrientationEnd] = [[1, 3], "N"];
         expect(calculateRoverPosition(
             plateauTaskSheet.upperRightCoordinates,
             roverOneTaskSheet.coordinatesStart,
@@ -35,8 +34,7 @@ describe("calculateRoverPosition testing suite", () => {
                 roverOrientationEnd]);
     })
     test("task sheet rover 2", () => {
-        const roverCoordinatesEnd = [5, 1];
-        const roverOrientationEnd = "E";
+        const [roverCoordinatesEnd, roverOrientationEnd] = [[5, 1], "E"];
         expect(calculateRoverPosition(
             plateauTaskSheet.upperRightCoordinates,
             roverTwoTaskSheet.coordinatesStart,
