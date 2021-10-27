@@ -5,9 +5,7 @@ const createPlateau = ([platX, platY]) => {
 }
 
 const placeRover = (plateau, roverCoordinates, roverOrientation) => {
-    const roverX = roverCoordinates[0];
-    const roverY = roverCoordinates[1];
-    const platY = plateau.length;
+    const [platY, roverX, roverY] = [plateau.length, roverCoordinates[0], roverCoordinates[1]];
     plateau[platY - 1 - roverY][roverX] = roverOrientation;
     return plateau;
 }
