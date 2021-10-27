@@ -7,31 +7,34 @@ describe("createPlateau testing suite", () => {
     test("createPlateau 6x5 Test", () => {
         const plateauUpperRightCoordinates = [6, 5];
         const plateau = [
-            [undefined, undefined, undefined, undefined, undefined, undefined],
-            [undefined, undefined, undefined, undefined, undefined, undefined],
-            [undefined, undefined, undefined, undefined, undefined, undefined],
-            [undefined, undefined, undefined, undefined, undefined, undefined],
-            [undefined, undefined, undefined, undefined, undefined, undefined]
+            ["_", "_", "_", "_", "_", "_", "_"],
+            ["_", "_", "_", "_", "_", "_", "_"],
+            ["_", "_", "_", "_", "_", "_", "_"],
+            ["_", "_", "_", "_", "_", "_", "_"],
+            ["_", "_", "_", "_", "_", "_", "_"],
+            ["_", "_", "_", "_", "_", "_", "_"]
         ]
         expect(createPlateau(plateauUpperRightCoordinates)).toEqual(plateau);
     })
     test("createPlateau 2x7 Test", () => {
         const plateauUpperRightCoordinates = [2, 7];
         const plateau = [
-            [undefined, undefined],
-            [undefined, undefined],
-            [undefined, undefined],
-            [undefined, undefined],
-            [undefined, undefined],
-            [undefined, undefined],
-            [undefined, undefined]
+            ["_", "_", "_"],
+            ["_", "_", "_"],
+            ["_", "_", "_"],
+            ["_", "_", "_"],
+            ["_", "_", "_"],
+            ["_", "_", "_"],
+            ["_", "_", "_"],
+            ["_", "_", "_"]
         ]
         expect(createPlateau(plateauUpperRightCoordinates)).toEqual(plateau);
     })
     test("createPlateau 1x1 Test", () => {
         const plateauUpperRightCoordinates = [1, 1];
         const plateau = [
-            [undefined]
+            ["_", "_"],
+            ["_", "_"]
         ]
         expect(createPlateau(plateauUpperRightCoordinates)).toEqual(plateau);
     })
@@ -47,17 +50,17 @@ describe("createPlateau testing suite", () => {
 
 describe("placeRover testing suite", () => {
     test("placeRover Initial Placement", () => {
-        const plateau = createPlateau([6, 5]);
+        let plateau = createPlateau([5, 5]);
         const roverCoordinates = [5, 1];
         const roverOrientation = "N";
         const act = placeRover(plateau, roverCoordinates, roverOrientation);
-        expect(act[3][5]).toEqual(roverOrientation);
+        expect(act[4][5]).toEqual(roverOrientation);
     })
     test("placeRover Initial Placement", () => {
-        const plateau = createPlateau([8, 8]);
+        let plateau = createPlateau([8, 8]);
         const roverCoordinates = [4, 4];
         const roverOrientation = "E";
         const act = placeRover(plateau, roverCoordinates, roverOrientation);
-        expect(act[3][4]).toEqual(roverOrientation);
+        expect(act[4][4]).toEqual(roverOrientation);
     })
 })
