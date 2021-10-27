@@ -106,6 +106,18 @@ describe("calculateRoverPosition testing suite", () => {
             roverMovement))
             .toThrow("Movement on X axis at index 1 not allowed");
     })
+    test("calculateRoverPosition - out of bounds (negative) on X", () => {
+        const plateauUpperRightCoordinates = [1, 1];
+        const roverCoordinatesStart = [0, 0];
+        const roverOrientationStart = "W";
+        const roverMovement = "MMMMMMM";
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement))
+            .toThrow("Movement on X axis at index 0 not allowed");
+    })
     test("calculateRoverPosition - out of bounds on Y", () => {
         const plateauUpperRightCoordinates = [1, 1];
         const roverCoordinatesStart = [0, 0];
@@ -117,5 +129,17 @@ describe("calculateRoverPosition testing suite", () => {
             roverOrientationStart,
             roverMovement))
             .toThrow("Movement on Y axis at index 5 not allowed");
+    })
+    test("calculateRoverPosition - out of bounds (negative) on Y", () => {
+        const plateauUpperRightCoordinates = [1, 1];
+        const roverCoordinatesStart = [0, 0];
+        const roverOrientationStart = "S";
+        const roverMovement = "M";
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement))
+            .toThrow("Movement on Y axis at index 0 not allowed");
     })
 })
