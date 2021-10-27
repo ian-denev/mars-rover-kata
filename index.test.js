@@ -3,33 +3,45 @@ const {
 } = require("./index");
 
 describe("calculateRoverPosition testing suite", () => {
+    beforeEach(() => {
+        plateauTaskSheet = {
+            upperRightCoordinates : [5, 5]
+        }
+        roverOneTaskSheet = {
+            coordinatesStart: [1, 2],
+            orientationStart: "N",
+            movement: "LMLMLMLMM"
+        };
+        roverTwoTaskSheet = {
+            coordinatesStart: [3, 3],
+            orientationStart: "E",
+            movement: "MMRMMRMRRM"
+        };
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
     test("task sheet rover 1", () => {
-        const plateauUpperRightCoordinates = [5, 5];
-        const roverCoordinatesStart = [1, 2];
-        const roverOrientationStart = "N";
-        const roverMovement = "LMLMLMLMM";
         const roverCoordinatesEnd = [1, 3];
         const roverOrientationEnd = "N";
         expect(calculateRoverPosition(
-            plateauUpperRightCoordinates,
-            roverCoordinatesStart,
-            roverOrientationStart,
-            roverMovement))
+            plateauTaskSheet.upperRightCoordinates,
+            roverOneTaskSheet.coordinatesStart,
+            roverOneTaskSheet.orientationStart,
+            roverOneTaskSheet.movement))
             .toStrictEqual([roverCoordinatesEnd,
                 roverOrientationEnd]);
     })
     test("task sheet rover 2", () => {
-        const plateauUpperRightCoordinates = [5, 5];
-        const roverCoordinatesStart = [3, 3];
-        const roverOrientationStart = "E";
-        const roverMovement = "MMRMMRMRRM";
         const roverCoordinatesEnd = [5, 1];
         const roverOrientationEnd = "E";
         expect(calculateRoverPosition(
-            plateauUpperRightCoordinates,
-            roverCoordinatesStart,
-            roverOrientationStart,
-            roverMovement))
+            plateauTaskSheet.upperRightCoordinates,
+            roverTwoTaskSheet.coordinatesStart,
+            roverTwoTaskSheet.orientationStart,
+            roverTwoTaskSheet.movement))
             .toStrictEqual([roverCoordinatesEnd,
                 roverOrientationEnd]);
     })
@@ -42,6 +54,7 @@ describe("calculateRoverPosition testing suite", () => {
         const roverOrientationEnd = "E";
         // assume that rover 1 finishes before rover 2 starts
         const previousRoverPositions = [[[1, 3], "N"]]
+        //calculateRoverPosition(...).fn mock
         expect(calculateRoverPosition(
             plateauUpperRightCoordinates,
             roverCoordinatesStart,
