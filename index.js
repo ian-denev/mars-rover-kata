@@ -1,4 +1,7 @@
-const calculateRoverPosition = (platCoord, [roverX, roverY], roverOri, roverMovement) => {
+const calculateRoverPosition = (platCoord, [roverX, roverY], roverOri, roverMovement, previousRoverPositions) => {
+    previousRoverPositions?.forEach(prevPos => {
+        if (roverX == prevPos[0][0] && roverY == prevPos[0][1]) throw new Error("Another rover is already at this position");
+    })
     if (roverX < 0 || roverX > platCoord[0]) throw new Error("Initial placement on X axis not allowed");
     else if (roverY < 0 || roverY > platCoord[1]) throw new Error("Initial placement on Y axis not allowed");
     [...roverMovement].forEach((letter, index) => {

@@ -33,6 +33,23 @@ describe("calculateRoverPosition testing suite", () => {
             .toStrictEqual([roverCoordinatesEnd,
                 roverOrientationEnd]);
     })
+    test("task sheet rover 1 and 2 - no collision", () => {
+        const plateauUpperRightCoordinates = [5, 5];
+        const roverCoordinatesStart = [3, 3];
+        const roverOrientationStart = "E";
+        const roverMovement = "MMRMMRMRRM";
+        const roverCoordinatesEnd = [5, 1];
+        const roverOrientationEnd = "E";
+        // assume that rover 1 finishes before rover 2 starts
+        const previousRoverPositions = [[[1, 3], "N"]]
+        expect(calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement,
+            previousRoverPositions)).toStrictEqual([roverCoordinatesEnd,
+                roverOrientationEnd]);
+    })
     test("initial placement out of bounds on X", () => {
         const plateauUpperRightCoordinates = [5, 5];
         const roverCoordinatesStart = [6, 3];
