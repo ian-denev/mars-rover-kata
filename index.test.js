@@ -93,4 +93,18 @@ describe("calculateRoverPosition testing suite", () => {
             roverMovement))
             .toThrow("Unrecognised movement command at index 6");
     })
+    test("calculateRoverPosition - no movement", () => {
+        const plateauUpperRightCoordinates = [1, 1];
+        const roverCoordinatesStart = [1, 0];
+        const roverOrientationStart = "S";
+        const roverMovement = "";
+        const roverCoordinatesEnd = [1, 0];
+        const roverOrientationEnd = "S";
+        expect(calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement)).toStrictEqual([roverCoordinatesEnd,
+                roverOrientationEnd]);
+    })
 })
