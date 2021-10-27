@@ -55,8 +55,6 @@ describe("calculateRoverPosition testing suite", () => {
         const roverCoordinatesStart = [3, 3];
         const roverOrientationStart = "E";
         const roverMovement = "MMRMMRMRRM";
-        const roverCoordinatesEnd = [5, 1];
-        const roverOrientationEnd = "E";
         const previousRoverPositions = [
             [[3, 3], "N"]
         ];
@@ -73,8 +71,6 @@ describe("calculateRoverPosition testing suite", () => {
         const roverCoordinatesStart = [2, 2];
         const roverOrientationStart = "E";
         const roverMovement = "MMRMMRMRRM";
-        const roverCoordinatesEnd = [5, 1];
-        const roverOrientationEnd = "E";
         const previousRoverPositions = [
             [[1, 1], "N"],
             [[0, 0], "W"],
