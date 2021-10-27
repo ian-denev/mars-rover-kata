@@ -1,7 +1,7 @@
-const { 
-    calculateRoverPosition, 
-    createPlateau, 
-    placeRover 
+const {
+    calculateRoverPosition,
+    createPlateau,
+    placeRover
 } = require("./index");
 
 xdescribe("createPlateau testing suite", () => {
@@ -46,7 +46,7 @@ xdescribe("createPlateau testing suite", () => {
     })
 })
 
-describe("placeRover testing suite", () => { 
+xdescribe("placeRover testing suite", () => {
     test("placeRover Initial Placement", () => {
         const plateau = createPlateau([6, 5]);
         const roverCoordinates = [5, 1];
@@ -60,5 +60,38 @@ describe("placeRover testing suite", () => {
         const roverOrientation = "E";
         const act = placeRover(plateau, roverCoordinates, roverOrientation);
         expect(act[3][4]).toEqual(roverOrientation);
+    })
+})
+
+describe("calculateRoverPosition testing suite", () => {
+    test("calculateRoverPosition Task Sheet Rover 1", () => {
+        const plateauUpperRightCoordinates = [5, 5];
+        const roverCoordinatesStart = [1, 2];
+        const roverOrientationStart = "N";
+        const roverMovement = "LMLMLMLMM";
+        const roverCoordinatesEnd = [1, 3];
+        const roverOrientationEnd = "N";
+        expect(calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement))
+            .toStrictEqual([roverCoordinatesEnd,
+                roverOrientationEnd]);
+    })
+    test("calculateRoverPosition Task Sheet Rover 2", () => {
+        const plateauUpperRightCoordinates = [5, 5];
+        const roverCoordinatesStart = [3, 3];
+        const roverOrientationStart = "E";
+        const roverMovement = "MMRMMRMRRM";
+        const roverCoordinatesEnd = [5, 1];
+        const roverOrientationEnd = "E";
+        expect(calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement))
+            .toStrictEqual([roverCoordinatesEnd,
+                roverOrientationEnd]);
     })
 })
