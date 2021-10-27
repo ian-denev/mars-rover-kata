@@ -19,6 +19,9 @@ const calculateRoverPosition = (platCoord, [roverX, roverY], roverOri, roverMove
                 }
                 if (roverX < 0 || roverX > platCoord[0]) throw new Error(`Movement on X axis at index ${index} not allowed`);
                 else if (roverY < 0 || roverY > platCoord[1]) throw new Error(`Movement on Y axis at index ${index} not allowed`);
+                previousRoverPositions?.forEach(prevPos => {
+                    if (roverX == prevPos[0][0] && roverY == prevPos[0][1]) throw new Error("Movement obstructed by another rover");
+                })
                 break;
             default:
                 throw new Error(`Unrecognised movement command at index ${index}`);

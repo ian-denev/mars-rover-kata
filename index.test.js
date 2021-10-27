@@ -89,6 +89,22 @@ describe("calculateRoverPosition testing suite", () => {
             previousRoverPositions))
             .toThrow("Another rover is already at this position");
     })
+    test("collision into another rover when moving", () => {
+        const plateauUpperRightCoordinates = [5, 5];
+        const roverCoordinatesStart = [0, 3];
+        const roverOrientationStart = "E";
+        const roverMovement = "MMLRRLMMMMMMM";
+        const previousRoverPositions = [
+            [[3, 3], "N"]
+        ];
+        expect(() => calculateRoverPosition(
+            plateauUpperRightCoordinates,
+            roverCoordinatesStart,
+            roverOrientationStart,
+            roverMovement,
+            previousRoverPositions))
+            .toThrow("Movement obstructed by another rover");
+    })
     test("initial placement out of bounds on X", () => {
         const plateauUpperRightCoordinates = [5, 5];
         const roverCoordinatesStart = [6, 3];
