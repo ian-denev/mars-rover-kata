@@ -8,7 +8,7 @@ const calculateRoverPosition = (platCoord, [roverX, roverY], roverOri, roverMove
 
     [...roverMovement].forEach((letter, index) => {
         switch (letter) {
-            // Rotate position
+            // Rotate 90 degrees
             case "L": roverOri == "N" ? roverOri = "W" : roverOri == "W" ? roverOri = "S" :
                 roverOri == "S" ? roverOri = "E" : roverOri == "E" ? roverOri = "N" : ""; break;
             case "R": roverOri == "N" ? roverOri = "E" : roverOri == "E" ? roverOri = "S" :
