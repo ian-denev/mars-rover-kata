@@ -1,6 +1,6 @@
 const {
     calculateRoverPosition
-} = require("./index");
+} = require("./roverOperations");
 
 describe("calculateRoverPosition testing suite", () => {
     // Dummy Objects
