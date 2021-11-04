@@ -5,6 +5,10 @@ This repository contains a solution for the Mars Rover Kata
 ## How to run
 * node index.js - use to run task sheet example
 * different inputs are available - comment/uncomment to use them
+## Unit tests
+* npm test - use to run all available testing suites, or run them individually:
+  * npm test roverOperations
+  * npm test visualise
 ## Solution Approach
 * The rover can bump into the edges of the plateau. Wrapping at the edges was considered, however, decided against after initial feedback on notes: "the idea is the rover lands on a plateau which is rectangular ... so it would have edges"
   * The original version of this task (https://kata-log.rocks/mars-rover-kata) states that there must be wrapping at the edges as the plateau represents a sphere.
